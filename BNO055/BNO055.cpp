@@ -220,23 +220,23 @@ void BNO055::get_calib(void){
 void BNO055::read_calibration_data(void){
     char tempmode = op_mode;
     setmode(OPERATION_MODE_CONFIG);
-    wait_ms(20);
+    ThisThread::sleep_for(20);
     tx[0] = ACCEL_OFFSET_X_LSB_ADDR;
     _i2c.write(address,tx,1,true);  
     _i2c.read(address,calibration,22,false); 
     setmode(tempmode);
-    wait_ms(10);
+    ThisThread::sleep_for(10);
 }
 
 void BNO055::write_calibration_data(void){
     char tempmode = op_mode;
     setmode(OPERATION_MODE_CONFIG);
-    wait_ms(20);
+    ThisThread::sleep_for(20);
     tx[0] = ACCEL_OFFSET_X_LSB_ADDR;
     _i2c.write(address,tx,1,true);  
     _i2c.write(address,calibration,22,false); 
     setmode(tempmode);
-    wait_ms(10);
+    ThisThread::sleep_for(10);
 }
 
 void BNO055::set_mapping(char orient){
