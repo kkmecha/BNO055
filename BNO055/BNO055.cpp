@@ -17,7 +17,7 @@ void BNO055::reset(){
     rx = rx | 0x20;
     writechar(BNO055_SYS_TRIGGER_ADDR,rx);
 //Wait for the system to come back up again (datasheet says 650ms)
-    wait_ms(675);
+    ThisThread::sleep_for(675ms);
 }
     
 bool BNO055::check(){
